@@ -1,0 +1,27 @@
+{
+  // name はダッシュボードにある Worker の名前と同じにしてください
+  "name": "marketing-trip",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+
+  // 画面ファイル（このフォルダ）。公開しないファイルは .assetsignore に書いてあります
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS"
+  },
+
+  // データベース（D1）
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "marketing-trip",
+      "database_id": "ここにD1のデータベースIDを入れる"
+    }
+  ],
+
+  // 編集できる人の確認（Cloudflare Access）
+  "vars": {
+    "ACCESS_TEAM_DOMAIN": "https://（チーム名）.cloudflareaccess.com",
+    "ACCESS_AUD": "ここにAccessアプリケーションのAUDタグを入れる"
+  }
+}

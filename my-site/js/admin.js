@@ -117,10 +117,13 @@
     var meRes = null;
     try {
       var r = await fetch("/api/db?who=1", { cache: "no-store", credentials: "same-origin" });
-      var j = await r.json().catch(function () { return {}; });
-      if (r.ok) meRes = j; else notice(j.error || "編集の権限を確認できませんでした。");
+      var text = await r.text(), j = null;
+      try { j = JSON.parse(text); } catch (e) {}
+      if (r.ok && j && j.email) meRes = j;
+      else if (j && j.error) notice(j.error);
+      else notice("編集の権限を確認できませんでした（/api/db の応答：" + r.status + "）。functions/api/db.js が動いていない可能性があります。");
     } catch (e) {
-      notice("サーバーにつながりません。Cloudflare Pages にデプロイしたページで開いてください。");
+      notice("サーバーにつながりません。Cloudflare にデプロイしたページで開いてください。");
     }
     canEdit = !!meRes;
     document.getElementById("who").textContent = meRes ? (meRes.name + " でログイン中") : "閲覧のみ";

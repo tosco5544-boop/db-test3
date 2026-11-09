@@ -1,13 +1,13 @@
 /**
- * /api/db — 地図の色のデータベース（Cloudflare Pages Functions → D1）
+ * /api/db — 地図の色のデータベース（Cloudflare Workers → D1）。worker.js から呼ばれます
  *
  *  GET  /api/db         … 地図の色（だれでも見られる。LPが使う）
  *  GET  /api/db?who=1   … ログイン中の編集者（編集ページが使う）
  *  POST /api/db         … 県の色を切り替える { "prefecture_id": 35, "status": "visited" }
  *
- * 必要な設定（Pages の「設定」）
- *  - バインディング：D1 データベースを変数名「DB」で追加
- *  - 環境変数：ACCESS_TEAM_DOMAIN（例 https://myteam.cloudflareaccess.com）
+ * 必要な設定（wrangler.jsonc）
+ *  - d1_databases：D1 データベースを変数名「DB」で追加
+ *  - vars：ACCESS_TEAM_DOMAIN（例 https://myteam.cloudflareaccess.com）
  *              ACCESS_AUD（Access アプリケーションの AUD タグ）
  *
  * 色を変えられるのは、Cloudflare Access で編集ページ（/admin）にログインした人のうち、
