@@ -1,6 +1,5 @@
 {
-  // name はダッシュボードにある Worker の名前と同じにしてください
-  "name": "marketing-trip",
+  "name": "db-test3",
   "main": "worker.js",
   "compatibility_date": "2026-10-01",
 
@@ -15,11 +14,11 @@
     {
       "binding": "DB",
       "database_name": "marketing-trip",
-      "database_id": "ここにD1のデータベースIDを入れる"
+      "database_id": "374f7acc-c47c-446f-bf71-8a9d7ddeb0dc"
     }
   ],
 
-  // 編集できる人の確認（Cloudflare Access）
+  // 編集できる人の確認（Cloudflare Access）※Accessの設定後に書き換える
   "vars": {
     "ACCESS_TEAM_DOMAIN": "https://（チーム名）.cloudflareaccess.com",
     "ACCESS_AUD": "ここにAccessアプリケーションのAUDタグを入れる"
